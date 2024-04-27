@@ -2,10 +2,11 @@ import numpy as np
 from scipy.optimize import minimize
 from sympy import sympify, symbols, diff
 import time
+from Optimiser import Optimiser
 
 class OptimizationComparer:
     #'newton-cg', 'dogleg' 'trust-ncg', 'trust-exact', 'trust-krylov' to be added.
-    methods = ['nelder-mead', 'powell', 'cg', 'bfgs', 'l-bfgs-b', 'tnc', 'cobyla', 'slsqp', 'trust-constr']
+    methods = ['nelder-mead', 'powell', 'cg', 'bfgs', 'l-bfgs-b', 'tnc', 'cobyla', 'slsqp', 'trust-constr', 'diff_ev']
     def __init__(self, filename):
         self.optimization_problems = self.parse_optimization_problems(filename)
 
@@ -21,13 +22,15 @@ class OptimizationComparer:
         initial_guess = np.ones(len(self.symbols_list))  # Initial guess
         for method in self.methods:
             start_time = time.time()
-            result = minimize(self.evaluate_objective_function_value, initial_guess, method=method)
+            optimiser: Optimiser = Optimiser()
+            opts ={}
+            bounds = [(0,10)] *len(self.symbols_list)  
+            options = {"opts": opts, "startguess": initial_guess, "bounds": bounds}
+            solution, best_eval, iterations, evaluations = optimiser.optimise(self.evaluate_objective_function_value, optalgo=method, options = options)
             end_time = time.time()
-            print(f"Method: {method}, minimum: {result.fun} Optimal solution: ", *{self.symbols_list[i]: result.x[i] for i in range(len(result.x))}.items(), end="")
-            if "nit" in result.keys():
-                print(f" iterations: {result.nit}", end="")
-            if "nfev" in result.keys(): 
-                print(f" evaluations: {result.nfev}", end="")
+            print(f"Method: {method}, minimum: {best_eval} Optimal solution: ", *{self.symbols_list[i]: solution[i] for i in range(len(solution))}.items(), end="")
+            print(f" iterations: {iterations}", end="")
+            print(f" evaluations: {evaluations}", end="")
             print(f" time taken: {end_time - start_time}")
     
     def evaluate_objective_function_value(self, params):
