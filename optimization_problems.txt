@@ -1,5 +1,0 @@
-opt1: x^2 + y^2 + 5*x + 5^y + 84
-opt2: (x^4 + sin(x)+ 5)* (y-8)^2
-opt3: (x-2)*(x-5)*(x+7)*(x+2)
-Rosenbrock: (a−x)^2+b*(y−x^2)^2
-Rastringin: 20+x^2+y^2 - 10*(cos(2*pi*x)+cos(2*pi*y))

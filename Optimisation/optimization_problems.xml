@@ -1,0 +1,40 @@
+<optimization_problems>
+    <problem>
+        <name>opt1</name>
+        <equation>x^2 + y^2 + 5*x + 5^y + 84</equation>
+        <lower_bound>
+            <par>-6</par>
+            <par>-2</par>
+        </lower_bound>
+        <upper_bound>
+            <par>1</par>
+            <par>2</par>
+        </upper_bound>
+        <initial_guess>
+            <par>0</par>
+            <par>0</par>
+        </initial_guess>
+    </problem>
+    <problem>
+        <name>opt2</name>
+        <equation>(x^4 + sin(x)+ 5)* (y-8)^2</equation>
+        <lower_bound>
+            <par>-6</par>
+            <par>0</par>
+        </lower_bound>
+        <upper_bound>
+            <par>-2</par>
+            <par>15</par>
+        </upper_bound>
+        <initial_guess>
+            <par>2</par>
+            <par>3</par>
+        </initial_guess>
+    </problem>
+</optimization_problems>
+
+
+<!-- opt2: (x^4 + sin(x)+ 5)* (y-8)^2
+opt3: (x-2)*(x-5)*(x+7)*(x+2)
+Rosenbrock: (a−x)^2+b*(y−x^2)^2
+Rastringin: 20+x^2+y^2 - 10*(cos(2*pi*x)+cos(2*pi*y)) -->

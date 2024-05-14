@@ -1,7 +1,7 @@
 from LinspaceRawData import LinspaceRawData
 from Model_runner import Model_runner
 import numpy as np
-from Optimiser import Optimiser
+from Optimisation.Optimiser import Optimiser
 
 class Model_fitter: 
     def __init__(self, model_factory, rawdata) -> None:
