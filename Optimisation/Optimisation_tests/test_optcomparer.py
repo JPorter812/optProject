@@ -3,14 +3,16 @@ import os
 import sys
 import pytest
 
-def test_parse_xml(): 
+
+def test_parse_xml():
     print("path: ", sys.path)
     print("hello")
     file_path = os.path.join(__file__, r"..\..\optimization_problems.xml")
-    optcomparer : oc = oc(file_path)
+    optcomparer: oc = oc(file_path)
 
     assert optcomparer.optimisation_problems[0].name == "opt1"
 
-if __name__ == "__main__": 
+
+if __name__ == "__main__":
     print("running script")
     test_parse_xml()

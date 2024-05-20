@@ -46,7 +46,9 @@ class OptimizationComparer:
                 OptimisationProblem(
                     name=problem_xml["name"],
                     equation=problem_xml["equation"],
-                    initial_guess=[float(value) for value in problem_xml["initial_guess"]["par"]],
+                    initial_guess=[
+                        float(value) for value in problem_xml["initial_guess"]["par"]
+                    ],
                     bounds=bounds,
                 )
             )
@@ -102,5 +104,3 @@ class OptimizationComparer:
             self.solve_optimization_problem()
         else:
             print(f"Optimization problem '{selected_problem}' not found.")
-
-

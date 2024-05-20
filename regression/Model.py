@@ -1,7 +1,7 @@
 class Model:
 
-    #y = A(dy/dt) + B
-    #y= (y0 - B)*e^(t/A) + B
+    # y = A(dy/dt) + B
+    # y= (y0 - B)*e^(t/A) + B
 
     def __init__(self, y0):
         self._y0 = y0
