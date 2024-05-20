@@ -2,6 +2,7 @@ from LinspaceRawData import LinspaceRawData
 from Model_runner import Model_runner
 import numpy as np
 from Optimisation.Optimiser import Optimiser
+from Optimisation.Optimiser import Optimiser_configuration
 
 class Model_fitter: 
     def __init__(self, model_factory, rawdata) -> None:
@@ -18,6 +19,6 @@ class Model_fitter:
         return self.calculate_least_squares_error(result)
 
     def FitModel(self, startingguess, optalgo, bounds = None, opts = None):
-        optimiser: Optimiser = Optimiser() 
+        optimiser: Optimiser = Optimiser(Optimiser_configuration()) 
         options = {"opts": opts, "startguess": startingguess, "bounds": bounds}
         return optimiser.optimise(self.objective_function, optalgo, options)
