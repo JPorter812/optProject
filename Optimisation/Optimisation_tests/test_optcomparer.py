@@ -1,8 +1,6 @@
 from Optimisation.optcomparer import OptimizationComparer as oc
 import os
 import sys
-import pytest
-
 
 def test_parse_xml():
     print("path: ", sys.path)
@@ -11,8 +9,3 @@ def test_parse_xml():
     optcomparer: oc = oc(file_path)
 
     assert optcomparer.optimisation_problems[0].name == "opt1"
-
-
-if __name__ == "__main__":
-    print("running script")
-    test_parse_xml()
